@@ -3,19 +3,20 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Volatile outlet of thoughts</title>
   <subtitle>var_dump of whatever Michcioperz is thinking</subtitle>
-  <link href="https://volatile.meekchopp.es/index.xml" rel="self" />
+  <link href="https://volatile.meekchopp.es/" rel="self" />
   <link href="https://creativecommons.org/licenses/by/4.0/" rel="license" />
-  <id>https://volatile.meekchopp.es</id>
-  <updated>2017-11-18T22:03:30+0100</updated>
+  <id>https://volatile.meekchopp.es/</id>
+  <updated>2017-11-18T22:26:30+01:00</updated>
   <author>
     <name>Michcioperz</name>
     <link href="https://meekchopp.es" rel="self" />
+  </author>
   <entry>
     <id>https://volatile.meekchopp.es/#1</id>
     <title>#1</title>
     <content>
       I couldn't wait for the next episode of Inuyashiki anime, so I kinda sat down and read it all until the ending, but what I saw there just put me in the same sort of limbo Lucid9 did. The ending's great, but there's no catharsis in it for me.
     </content>
-    <updated>2017-11-18T22:26:30+0100</updated>
+    <updated>2017-11-18T22:26:30+01:00</updated>
   </entry>
 </feed>
