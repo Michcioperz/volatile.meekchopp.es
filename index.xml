@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Volatile outlet of thoughts</title>
+  <subtitle>var_dump of whatever Michcioperz is thinking</subtitle>
+  <link href="https://volatile.meekchopp.es/index.xml" rel="self" />
+  <id>https://volatile.meekchopp.es</id>
+  <updated>2017-11-18T22:03:30+0100</updated>
+</feed>
