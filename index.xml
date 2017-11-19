@@ -8,7 +8,8 @@
   <updated>2017-11-19T09:34:40+01:00</updated>
   <author>
     <name>Michcioperz</name>
-    <link href="https://meekchopp.es" rel="self" />
+    <uri>https://meekchopp.es</uri>
+    <email>public+microblog@meekchopp.es</email>
   </author>
   <entry>
     <id>https://volatile.meekchopp.es/#2</id>
