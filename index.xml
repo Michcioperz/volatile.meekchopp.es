@@ -14,8 +14,7 @@
     <id>https://volatile.meekchopp.es/#2</id>
     <title>#2</title>
     <content>
-      <p>So I've just run into <a href="https://minbrowser.github.io/min/">yet another "smarter, faster web browser"</a>. Yes, it it Electron based. I guess it's true what they said at the foundations of programming lecture, that we care about speed more than about memory, because memory can never be worse than speed.</p>
-      <p>But... omg they said "it uses less battery power". Tell me all about how a freakin' Electron uses less battery power.</p>
+      So I've just run into [yet another "smarter, faster web browser"](https://minbrowser.github.io/min/). Yes, it it Electron based. I guess it's true what they said at the foundations of programming lecture, that we care about speed more than about memory, because memory can never be worse than speed. But... omg they said "it uses less battery power". Tell me all about how a freakin' Electron uses less battery power.
     </content>
     <updated>2017-11-19T09:34:40+01:00</updated>
   </entry>
