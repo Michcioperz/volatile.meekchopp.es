@@ -5,11 +5,20 @@
   <link href="https://volatile.meekchopp.es/" rel="self" />
   <link href="https://creativecommons.org/licenses/by/4.0/" rel="license" />
   <id>https://volatile.meekchopp.es/</id>
-  <updated>2017-11-18T22:26:30+01:00</updated>
+  <updated>2017-11-19T09:34:40+01:00</updated>
   <author>
     <name>Michcioperz</name>
     <link href="https://meekchopp.es" rel="self" />
   </author>
+  <entry>
+    <id>https://volatile.meekchopp.es/#2</id>
+    <title>#2</title>
+    <content>
+      <p>So I've just run into <a href="https://minbrowser.github.io/min/">yet another "smarter, faster web browser"</a>. Yes, it it Electron based. I guess it's true what they said at the foundations of programming lecture, that we care about speed more than about memory, because memory can never be worse than speed.</p>
+      <p>But... omg they said "it uses less battery power". Tell me all about how a freakin' Electron uses less battery power.</p>
+    </content>
+    <updated>2017-11-19T09:34:40+01:00</updated>
+  </entry>
   <entry>
     <id>https://volatile.meekchopp.es/#1</id>
     <title>#1</title>
