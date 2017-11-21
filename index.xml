@@ -5,12 +5,20 @@
   <link href="https://volatile.meekchopp.es/" rel="self" />
   <link href="https://creativecommons.org/licenses/by/4.0/" rel="license" />
   <id>https://volatile.meekchopp.es/</id>
-  <updated>2017-11-19T22:43:00+01:00</updated>
+  <updated>2017-11-21T07:18:00+01:00</updated>
   <author>
     <name>Michcioperz</name>
     <uri>https://meekchopp.es</uri>
     <email>public+microblog@meekchopp.es</email>
   </author>
+  <entry>
+    <id>https://volatile.meekchopp.es/#4</id>
+    <title>#4</title>
+    <content>
+      Day temperature tomorrow is -0 degrees Celsius. Data kindly provided by that surprisingly broken news software on the Warsaw Metro trains that also display yesterday's stock exchange numbers as from today's closing if there wasn't an opening today yet.
+    </content>
+    <updated>2017-11-21T07:18:00+01:00</updated>
+  </entry>
   <entry>
     <id>https://volatile.meekchopp.es/#3</id>
     <title>#3</title>
