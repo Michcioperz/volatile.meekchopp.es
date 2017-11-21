@@ -1,0 +1,1 @@
+Day temperature tomorrow is -0 degrees Celsius. Data kindly provided by that surprisingly broken news software on the Warsaw Metro trains that also display yesterday's stock exchange numbers as from today's closing if there wasn't an opening today yet.
