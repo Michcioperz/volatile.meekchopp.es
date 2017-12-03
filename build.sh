@@ -3,7 +3,34 @@ WEBSITE_ROOT=https://volatile.meekchopp.es/
 echo "Creating directory structure"
 mkdir -p _site
 mkdir -p _site/posts
-echo "Starting Atom template"
+LATEST_CHANGED=""
+for post in posts/*.markdown
+do
+  POST_PREFIX=${post%.markdown}
+  POST_ID=${POST_PREFIX#posts/}
+  LAST_CHANGED=`git log -n 1 --pretty=format:%aI -- ${post}`
+  FIRST_CHANGED=$(git log --pretty=format:%aI -- ${post} | tail -n 1)
+  echo "Preparing post id ${POST_ID} from ${LAST_CHANGED}"
+  if [ "$LATEST_CHANGED" \< "$LAST_CHANGED" ]; then
+    LATEST_CHANGED="${LAST_CHANGED}"
+  fi
+  cp $post _site/$post
+  cmark --to html --smart $post > _site/${POST_PREFIX}.html
+  cat > _site/${POST_PREFIX}.xml <<EOF
+  <entry>
+    <id>${WEBSITE_ROOT}${POST_PREFIX}.xml</id>
+    <title>#${POST_ID}</title>
+    <content type="html">
+    $(cat _site/${POST_PREFIX}.html)
+    </content>
+    <published>${FIRST_CHANGED}</published>
+    <updated>${LAST_CHANGED}</updated>
+  </entry>
+EOF
+  cat _site/${POST_PREFIX}.xml >> _site/index.xml
+  sed -i '1i<?xml version="1.0" encoding="UTF-8"?>' _site/${POST_PREFIX}.xml
+done
+echo "Generating main feed"
 cat > _site/index.xml <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
@@ -17,40 +44,15 @@ cat > _site/index.xml <<EOF
     <uri>https://meekchopp.es</uri>
     <email>public+microblog@meekchopp.es</email>
   </author>
-EOF
-LATEST_CHANGED=""
-for post in `ls posts/*.markdown | sort -V -r `
-do
-  POST_PREFIX=${post%.markdown}
-  POST_ID=${POST_PREFIX#posts/}
-  LAST_CHANGED=`git log -n 1 --pretty=format:%aI -- ${post}`
-  FIRST_CHANGED=$(git log --pretty=format:%aI -- ${post} | tail -n 1)
-  echo "Adding post id ${POST_ID} from ${LAST_CHANGED}"
-  if [ "$LATEST_CHANGED" \< "$LAST_CHANGED" ]; then
-    LATEST_CHANGED="${LAST_CHANGED}"
-  fi
-  cp $post _site/$post
-  cmark --to html --smart $post > _site/${POST_PREFIX}.html
-  cat > _site/${POST_PREFIX}.xml <<EOF
-  <entry>
-    <id>${WEBSITE_ROOT}${POST_PREFIX}.xml</id>
-    <title>#${POST_ID}</title>
-    <content type="html">
-    $(cat _site/${POST_PREFIX}.html)
-    </content>
-    <content type="markdown">
-    $(cat _site/$post|xmlstarlet esc)
-    </content>
-    <published>${FIRST_CHANGED}</published>
-    <updated>${LAST_CHANGED}</updated>
-  </entry>
-EOF
-  cat _site/${POST_PREFIX}.xml >> _site/index.xml
-  sed -i '1i<?xml version="1.0" encoding="UTF-8"?>' _site/${POST_PREFIX}.xml
-done
-echo "Finishing with last update at ${LATEST_CHANGED}"
-cat >> _site/index.xml <<EOF
   <updated>${LATEST_CHANGED}</updated>
+EOF
+for post in `ls _site/posts/*.xml | sort -V -r`
+do
+  echo "Adding and finalizing ${post#_site/posts/}"
+  cat $post >> _site/index.xml
+  sed -i '1i<?xml version="1.0" encoding="UTF-8"?>' $post
+done
+cat >> _site/index.xml <<EOF
 </feed>
 EOF
 echo "Build complete."
