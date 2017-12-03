@@ -1,4 +1,5 @@
 #!/bin/bash
+GENERATOR_VERSION=`git log -n 1 --pretty=format:%h -- build.sh`
 WEBSITE_ROOT=https://volatile.meekchopp.es/
 echo "Creating directory structure"
 mkdir -p _site
@@ -42,6 +43,7 @@ cat > _site/index.xml <<EOF
     <uri>https://meekchopp.es</uri>
     <email>public+microblog@meekchopp.es</email>
   </author>
+  <generator uri="https://github.com/michcioperz/volatile.meekchopp.es" version="${GENERATOR_VERSION}">Michcioperz's Volatile (revision ${GENERATOR_VERSION})</generator>
   <updated>${LATEST_CHANGED}</updated>
 EOF
 for post in `ls _site/posts/*.xml | sort -V -r`
