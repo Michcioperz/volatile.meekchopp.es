@@ -1,0 +1,1 @@
+Writing XML by hand was getting pretty boring (especially on the metro), so now I have a cute little git hook on my own server that builds the XMLs from Markdown files for me, using Git data to calculate the update time. Nice!
