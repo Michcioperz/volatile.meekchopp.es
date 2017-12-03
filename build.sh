@@ -22,7 +22,9 @@ do
     <id>${WEBSITE_ROOT}${POST_PREFIX}.xml</id>
     <title>#${POST_ID}</title>
     <content type="xhtml">
-    $(cat _site/${POST_PREFIX}.html)
+      <div>
+        $(cat _site/${POST_PREFIX}.html)
+      </div>
     </content>
     <published>${FIRST_CHANGED}</published>
     <updated>${LAST_CHANGED}</updated>
