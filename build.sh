@@ -19,7 +19,7 @@ cat > _site/index.xml <<EOF
   </author>
 EOF
 LATEST_CHANGED=""
-for post in posts/*.markdown
+for post in `ls posts/*.markdown | sort -V -r `
 do
   POST_PREFIX=${post%.markdown}
   POST_ID=${POST_PREFIX#posts/}
