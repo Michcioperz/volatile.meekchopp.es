@@ -21,7 +21,7 @@ do
   <entry>
     <id>${WEBSITE_ROOT}${POST_PREFIX}.xml</id>
     <title>#${POST_ID}</title>
-    <content type="html">
+    <content type="xhtml">
     $(cat _site/${POST_PREFIX}.html)
     </content>
     <published>${FIRST_CHANGED}</published>
