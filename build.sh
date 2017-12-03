@@ -22,7 +22,7 @@ do
     <id>${WEBSITE_ROOT}${POST_PREFIX}.xml</id>
     <title>#${POST_ID}</title>
     <content type="xhtml">
-      <div xmlns=http://www.w3.org/1999/xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
         $(cat _site/${POST_PREFIX}.html)
       </div>
     </content>
