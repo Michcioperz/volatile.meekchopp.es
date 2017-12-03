@@ -35,11 +35,11 @@ do
   <entry>
     <id>${WEBSITE_ROOT}${POST_PREFIX}.xml</id>
     <title>#${POST_ID}</title>
-    <content type="markdown">
-    $(cat _site/$post|xmlstarlet esc)
-    </content>
     <content type="html">
     $(cat _site/${POST_PREFIX}.html)
+    </content>
+    <content type="markdown">
+    $(cat _site/$post|xmlstarlet esc)
     </content>
     <published>${FIRST_CHANGED}</published>
     <updated>${LAST_CHANGED}</updated>
