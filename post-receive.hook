@@ -7,7 +7,10 @@ echo "Checkout..."
 git clone --recursive . build-working-tree 
 echo "Building the website..." 
 cd build-working-tree 
-bash build.sh 
+GIT_OLD_DIR=${GIT_DIR}
+unset GIT_DIR
+bash build.sh
+GIT_DIR=${GIT_OLD_DIR}
 cd .. 
 echo "Deploying the website..."
 mkdir -p active-site
