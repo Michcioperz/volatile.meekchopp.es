@@ -20,6 +20,9 @@ do
   cat > _site/${POST_PREFIX}.xml <<EOF
   <entry>
     <id>${WEBSITE_ROOT}${POST_PREFIX}.xml</id>
+    <link type="text/xml" href="${WEBSITE_ROOT}${POST_PREFIX}.xml" />
+    <link rel="alternate" type="text/html" href="${WEBSITE_ROOT}${POST_PREFIX}.html" />
+    <link rel="alternate" type="text/markdown" href="${WEBSITE_ROOT}${POST_PREFIX}.html" />
     <title>#${POST_ID}</title>
     <content type="xhtml">
       <div xmlns="http://www.w3.org/1999/xhtml">
