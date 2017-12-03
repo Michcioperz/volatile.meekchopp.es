@@ -1,0 +1,14 @@
+#!/bin/sh 
+echo "Updating server info..." 
+git update-server-info 
+echo "Cleaning up older versions..." 
+rm -rf build-working-tree 
+echo "Checkout..." 
+git clone --recursive . build-working-tree 
+echo "Building the website..." 
+pushd build-working-tree 
+bash build.sh 
+popd 
+echo "Deploying the website..." 
+rsync --delete --checksum --recursive --verbose build-working-tree/_site active-site 
+echo "Done."
