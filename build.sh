@@ -27,8 +27,6 @@ do
     <updated>${LAST_CHANGED}</updated>
   </entry>
 EOF
-  cat _site/${POST_PREFIX}.xml >> _site/index.xml
-  sed -i '1i<?xml version="1.0" encoding="UTF-8"?>' _site/${POST_PREFIX}.xml
 done
 echo "Generating main feed"
 cat > _site/index.xml <<EOF
