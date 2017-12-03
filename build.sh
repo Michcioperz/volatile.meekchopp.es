@@ -56,6 +56,7 @@ do
   echo "Adding and finalizing ${post#_site/posts/}"
   cat $post >> _site/index.xml
   sed -i '1i<?xml version="1.0" encoding="UTF-8"?>' $post
+  sed -i 's/<entry>/<entry xmlns="http:\/\/www.w3.org\/2005\/Atom">/' $post
 done
 cat >> _site/index.xml <<EOF
 </feed>
