@@ -24,6 +24,7 @@ do
   POST_PREFIX=${post%.markdown}
   POST_ID=${POST_PREFIX#posts/}
   LAST_CHANGED=`git log -n 1 --pretty=format:%aI -- ${post}`
+  FIRST_CHANGED=$(git log --pretty=format:%aI -- ${post} | tail -n 1)
   echo "Adding post id ${POST_ID} from ${LAST_CHANGED}"
   if [ "$LATEST_CHANGED" \< "$LAST_CHANGED" ]; then
     LATEST_CHANGED="${LAST_CHANGED}"
@@ -40,6 +41,7 @@ do
     <content type="html">
     $(cat _site/${POST_PREFIX}.html)
     </content>
+    <published>${FIRST_CHANGED}</published>
     <updated>${LAST_CHANGED}</updated>
   </entry>
 EOF
