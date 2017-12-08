@@ -61,4 +61,9 @@ done
 cat >> _site/index.xml <<EOF
 </feed>
 EOF
+echo "Reformatting XMLs"
+for i in _site/**/*.xml
+do
+  xmlstarlet format -s 2 "$i" > ${i%.xml}.f.xml && mv ${i%.xml}.f.xml $i || rm -rf ${i%.xml}.f.xml
+done
 echo "Build complete."
