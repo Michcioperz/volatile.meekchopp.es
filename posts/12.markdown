@@ -1,0 +1,5 @@
+I think I'll be turning this place into something that can federate with ActivityPub. I think I could just make the inbox send objects to me via email, and I could respond with hand-written objects, pushing them manually. There are things that would have to be fully automated, like following, because that's what the pubsub protocols like to require, but there's plenty that can be deferred to be done manually.
+
+I've also been meaning to shut down one of my servers, Megumin, to save up a bit, but I don't think it can be done as fast as I'd like (which is before the year ends), but at least I started writing down the services that my servers handle, and I even moved a few unimportant things to GitHub Pages.
+
+But for now, I might as well stick to watching some more Princess Principal.
