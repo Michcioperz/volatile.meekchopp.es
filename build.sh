@@ -29,7 +29,7 @@ do
   cat > _site/${POST_PREFIX}.xml <<EOF
   <entry>
     <id>${WEBSITE_ROOT}${POST_PREFIX}.xml</id>
-    <link rel="self" type="text/xml" href="${WEBSITE_ROOT}${POST_PREFIX}.xml" />
+    <link rel="self" type="application/atom+xml" href="${WEBSITE_ROOT}${POST_PREFIX}.xml" />
     <link rel="alternate" type="text/html" href="${WEBSITE_ROOT}${POST_PREFIX}.html" />
     <link rel="alternate" type="text/markdown" href="${WEBSITE_ROOT}${POST_PREFIX}.markdown" />
     <title>${POST_TITLE}</title>
