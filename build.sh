@@ -113,7 +113,7 @@ do
       <section id="`xmlstarlet esc "$post_id"`">
         <a href="posts/$post_id.html">
 EOF
-  cat "$post" | sed '2i<a/>' >> _site/index.html
+  cat "$post" | sed '2i</a>' >> _site/index.html
   cat >> _site/index.html <<EOF
       </section>
 EOF
