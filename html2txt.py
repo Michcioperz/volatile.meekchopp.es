@@ -12,7 +12,7 @@ def html2txt(filename):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('file', type=str)
-    parser.add_argument('-l', '--limit', type=int, default=500)
+    parser.add_argument('-l', '--limit', type=int, default=250)
     args = parser.parse_args()
     text = html2txt(args.file)
     if len(text) > args.limit:
