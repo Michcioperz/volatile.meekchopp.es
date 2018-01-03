@@ -76,26 +76,20 @@ done
 cat >> _site/index.xml <<EOF
 </feed>
 EOF
-echo "Reformatting XMLs"
-for i in `find _site -name "*.xml"`
-do
-  echo -e "\tReformatting $i"
-  xmlstarlet format -s 2 "$i" > ${i%.xml}.f.xml && mv ${i%.xml}.f.xml $i || rm -rf ${i%.xml}.f.xml
-done
 echo "Generating main HTML"
 cat > _site/index.html <<EOF
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
     <title>`xmlstarlet esc "${WEBSITE_TITLE}"`</title>
-    <meta name="description" content="`xmlstarlet esc "${WEBSITE_SUBTITLE}"`">
+    <meta name="description" content="`xmlstarlet esc "${WEBSITE_SUBTITLE}"`" />
     <meta name="generator" content="Michcioperz's Volatile (revision ${GENERATOR_VERSION})" />
-    <link href="/style.css" rel="stylesheet">
-    <link href="${WEBSITE_AUTHOR_URL}" rel="author">
-    <link href="https://creativecommons.org/licenses/by/4.0/" rel="license">
-    <link href="index.xml" rel="alternate" type="application/atom+xml">
+    <link href="/style.css" rel="stylesheet" />
+    <link href="${WEBSITE_AUTHOR_URL}" rel="author" />
+    <link href="https://creativecommons.org/licenses/by/4.0/" rel="license" />
+    <link href="index.xml" rel="alternate" type="application/atom+xml"/>
   </head>
   <body>
     <header>
@@ -122,13 +116,13 @@ EOF
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
     <title>Post #${post_id} :: `xmlstarlet esc "${WEBSITE_TITLE}"`</title>
-    <meta name="generator" content="Michcioperz's Volatile (revision ${GENERATOR_VERSION})">
+    <meta name="generator" content="Michcioperz's Volatile (revision ${GENERATOR_VERSION})" />
     <link href="${WEBSITE_AUTHOR_URL}" rel="author" />
     <link href="https://creativecommons.org/licenses/by/4.0/" rel="license" />
-    <link href="${post_id}.xml" rel="self" type="application/atom+xml" />
+    <link href="${post_id}.xml" rel="alternate" type="application/atom+xml" />
     <link href="${post_id}.markdown" rel="alternate" type="text/markdown" />
     <link href="/style.css" rel="stylesheet" />
   </head>
@@ -155,4 +149,18 @@ cat >> _site/index.html <<EOF
 EOF
 echo "Adding a stylesheet"
 cp "style.css" "_site/style.css"
+echo "Reformatting XMLs"
+for i in `find _site -name "*.xml"`
+do
+  echo -e "\tReformatting $i"
+  j="${i%.xml}.f.xml"
+  xmlstarlet format -s 2 "$i" > "$j" && mv "$j" "$i" || rm -rf "$j"
+done
+echo "Reformatting HTMLs"
+for i in `find _site -name "*.html"`
+do
+  echo -e "\tReformatting $i"
+  j="${i%.html}.f.html"
+  xmlstarlet format -o -s 2 "$i" > "$j" && mv "$j" "$i" || rm -rf "$j"
+done
 echo "Build complete."
