@@ -1,0 +1,10 @@
+I think I may finally be able to pick up some podcasts thanks to Spotify now having a huge base of them. I'm not exactly sure which ones, cause there are still too many (who would've thought hahaha) and I'm still mediocre at understanding casual English conversations (high school classes had me adapt to clear British English as well as Polish mumbling that sounds a bit like English).
+
+So far what I think I may like is [Polygon's Quality Control](https://www.polygon.com/quality-control), and then [Star](https://twitter.com/TheStarfishface) has yelled good things about The Adventure Zone in her Discord and on Twitter, and so has [Tim](https://twitter.com/puzzlem00n), but I tried the first episode and it's a bit hard to get used to.
+
+I feel like I'm missing out on something huge, like a recommendation engine that could gather what my friends listen to.
+
+In the meantime I caved in and installed Twidere and configured it for both my Twitter and my niu.moe account, but I'd like to only use it to keep in touch with friends, like, no original content posted except for links to here. Which I suppose means writing infrastructure for that again, yikes.
+
+
+Also I have just realized that I can move cursor in Vim in Termux by touching the target point. That should make typing these posts much easier.
