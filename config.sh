@@ -1,1 +1,6 @@
-WEBSITE_ROOT=https://volatile.meekchopp.es/
+WEBSITE_TITLE="Volatile outlet of thoughts"
+WEBSITE_SUBTITLE="the legit source for original content from Michcioperz"
+WEBSITE_ROOT="https://volatile.meekchopp.es/"
+WEBSITE_AUTHOR_NAME="Michcioperz"
+WEBSITE_AUTHOR_URL="https://meekchopp.es"
+WEBSITE_AUTHOR_EMAIL="public+volatile@meekchopp.es"

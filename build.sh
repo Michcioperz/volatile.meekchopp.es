@@ -42,21 +42,21 @@ do
     <updated>${LAST_CHANGED}</updated>
   </entry>
 EOF
-  sed -i "1i<h1>${POST_TITLE}</h1>" "_site/${POST_PREFIX}.html"
+  sed -i "1i<h3>${POST_TITLE}</h3>" "_site/${POST_PREFIX}.html"
 done
 echo "Generating main feed"
 cat > _site/index.xml <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Volatile outlet of thoughts</title>
-  <subtitle>a traditional microblog</subtitle>
+  <title>${WEBSITE_TITLE}</title>
+  <subtitle>${WEBSITE_SUBTITLE}</subtitle>
   <link href="${WEBSITE_ROOT}index.xml" rel="self" />
   <link href="https://creativecommons.org/licenses/by/4.0/" rel="license" />
   <id>${WEBSITE_ROOT}index.xml</id>
   <author>
-    <name>Michcioperz</name>
-    <uri>https://meekchopp.es</uri>
-    <email>public+microblog@meekchopp.es</email>
+    <name>${WEBSITE_AUTHOR_NAME}</name>
+    <uri>${WEBSITE_AUTHOR_URL}</uri>
+    <email>${WEBSITE_AUTHOR_EMAIL}</email>
   </author>
   <generator uri="https://github.com/michcioperz/volatile.meekchopp.es" version="${GENERATOR_VERSION}">Michcioperz's Volatile (revision ${GENERATOR_VERSION})</generator>
   <updated>${LATEST_CHANGED}</updated>
@@ -77,6 +77,64 @@ do
   echo -e "\tReformatting $i"
   xmlstarlet format -s 2 "$i" > ${i%.xml}.f.xml && mv ${i%.xml}.f.xml $i || rm -rf ${i%.xml}.f.xml
 done
-echo "Adding the HTML index"
-cp landing.html _site/index.html
+echo "Generating main HTML"
+cat > _site/index.html <<EOF
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>`xmlstarlet esc "${WEBSITE_TITLE}"`</title>
+    <meta name="description" content="`xmlstarlet esc "${WEBSITE_SUBTITLE}"`">
+  </head>
+  <body>
+    <header>
+      <h1>`xmlstarlet esc "${WEBSITE_TITLE}"`</h1>
+      <h2>`xmlstarlet esc "${WEBSITE_SUBTITLE}"`</h2>
+    </header>
+    <main>
+EOF
+for post in `find _site/posts -name "*.html" | xargs -n 1 basename | sort -n -r`
+do
+  post_id="${post%.html}"
+  post="_site/posts/$post"
+  echo -e "\tAdding and reformatting $post"
+  cat >> _site/index.html <<EOF
+      <section id="`xmlstarlet esc "$post_id"`">
+        <a href="posts/$post_id.html">
+EOF
+  cat "$post" | sed '2i<a/>' >> _site/index.html
+  cat >> _site/index.html <<EOF
+      </section>
+EOF
+  post_reformatted_file="${post%.html}.f.html"
+  cat > "$post_reformatted_file" <<EOF
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Post #${post_id} :: `xmlstarlet esc "${WEBSITE_TITLE}"`</title>
+  </head>
+  <body>
+    <header>
+      <h1>`xmlstarlet esc "${WEBSITE_TITLE}"`</h1>
+      <h2>`xmlstarlet esc "${WEBSITE_SUBTITLE}"`</h2>
+      <a href="/">posts list</a>
+    </header>
+    <main>
+EOF
+  cat "$post" >> "$post_reformatted_file"
+  cat >> "$post_reformatted_file" <<EOF
+    </main>
+  </body>
+</html>
+EOF
+  mv "$post_reformatted_file" "$post"
+done
+cat >> _site/index.html <<EOF
+    </main>
+  </body>
+</html>
+EOF
 echo "Build complete."
