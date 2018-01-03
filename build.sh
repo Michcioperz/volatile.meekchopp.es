@@ -91,7 +91,11 @@ cat > _site/index.html <<EOF
     <meta name="viewport" content="width=device-width">
     <title>`xmlstarlet esc "${WEBSITE_TITLE}"`</title>
     <meta name="description" content="`xmlstarlet esc "${WEBSITE_SUBTITLE}"`">
-    <link rel="stylesheet" href="/style.css">
+    <meta name="generator" content="Michcioperz's Volatile (revision ${GENERATOR_VERSION})" />
+    <link href="/style.css" rel="stylesheet">
+    <link href="${WEBSITE_AUTHOR_URL}" rel="author">
+    <link href="https://creativecommons.org/licenses/by/4.0/" rel="license">
+    <link href="index.xml" rel="alternate" type="application/atom+xml">
   </head>
   <body>
     <header>
@@ -121,7 +125,12 @@ EOF
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <title>Post #${post_id} :: `xmlstarlet esc "${WEBSITE_TITLE}"`</title>
-    <link rel="stylesheet" href="/style.css">
+    <meta name="generator" content="Michcioperz's Volatile (revision ${GENERATOR_VERSION})">
+    <link href="${WEBSITE_AUTHOR_URL}" rel="author" />
+    <link href="https://creativecommons.org/licenses/by/4.0/" rel="license" />
+    <link href="${post_id}.xml" rel="self" type="application/atom+xml" />
+    <link href="${post_id}.markdown" rel="alternate" type="text/markdown" />
+    <link href="/style.css" rel="stylesheet" />
   </head>
   <body>
     <header>
