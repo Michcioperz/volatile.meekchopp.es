@@ -9,6 +9,15 @@ for post in posts/*.markdown
 do
   POST_PREFIX=${post%.markdown}
   POST_ID=${POST_PREFIX#posts/}
+  POST_TITLE="#${POST_ID}"
+  POST_JSON_APPENDIX="${POST_PREFIX}.json"
+  if [[ -f "${POST_JSON_APPENDIX}" ]]; then
+    CANDIDATE_POST_TITLE="`cat ${POST_JSON_APPENDIX} | jq -r .title`"
+    if [[ -n "${CANDIDATE_POST_TITLE}" ]]; then
+      POST_TITLE="${CANDIDATE_POST_TITLE}"
+    fi
+  fi
+  POST_TITLE="`xmlstarlet esc "${POST_TITLE}"`"
   LAST_CHANGED=`git log -n 1 --pretty=format:%aI -- ${post}`
   FIRST_CHANGED=$(git log --pretty=format:%aI -- ${post} | tail -n 1)
   echo "Preparing post id ${POST_ID} from ${LAST_CHANGED}"
@@ -20,10 +29,10 @@ do
   cat > _site/${POST_PREFIX}.xml <<EOF
   <entry>
     <id>${WEBSITE_ROOT}${POST_PREFIX}.xml</id>
-    <link type="text/xml" href="${WEBSITE_ROOT}${POST_PREFIX}.xml" />
+    <link rel="self" type="text/xml" href="${WEBSITE_ROOT}${POST_PREFIX}.xml" />
     <link rel="alternate" type="text/html" href="${WEBSITE_ROOT}${POST_PREFIX}.html" />
-    <link rel="alternate" type="text/markdown" href="${WEBSITE_ROOT}${POST_PREFIX}.html" />
-    <title>#${POST_ID}</title>
+    <link rel="alternate" type="text/markdown" href="${WEBSITE_ROOT}${POST_PREFIX}.markdown" />
+    <title>${POST_TITLE}</title>
     <content type="xhtml">
       <div xmlns="http://www.w3.org/1999/xhtml">
         $(cat _site/${POST_PREFIX}.html)
@@ -33,6 +42,7 @@ do
     <updated>${LAST_CHANGED}</updated>
   </entry>
 EOF
+  sed -i "1i<h1>${POST_TITLE}</h1>" "_site/${POST_PREFIX}.html"
 done
 echo "Generating main feed"
 cat > _site/index.xml <<EOF
@@ -40,9 +50,9 @@ cat > _site/index.xml <<EOF
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Volatile outlet of thoughts</title>
   <subtitle>a traditional microblog</subtitle>
-  <link href="${WEBSITE_ROOT}" rel="self" />
+  <link href="${WEBSITE_ROOT}index.xml" rel="self" />
   <link href="https://creativecommons.org/licenses/by/4.0/" rel="license" />
-  <id>${WEBSITE_ROOT}</id>
+  <id>${WEBSITE_ROOT}index.xml</id>
   <author>
     <name>Michcioperz</name>
     <uri>https://meekchopp.es</uri>
