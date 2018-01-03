@@ -1,0 +1,5 @@
+Okay, here's a fun new fact.
+
+My blog is a correct Atom feed.
+
+Viewing the feed crashes Firefox on my laptop.
