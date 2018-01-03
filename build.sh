@@ -1,6 +1,6 @@
 #!/bin/bash
+source config.sh
 GENERATOR_VERSION=`git log -n 1 --pretty=format:%h -- build.sh`
-WEBSITE_ROOT=https://volatile.meekchopp.es/
 echo "Creating directory structure"
 mkdir -p _site
 mkdir -p _site/posts
