@@ -1,0 +1,1 @@
+So it turns out (first reported by [a kind soul on Twitter](https://twitter.com/passcod)) that it's just Alpine Linux's build of Firefox that breaks when given the feed of my blog. But still, I think I'll just work on the generator some more and start making proper `index.html`.
