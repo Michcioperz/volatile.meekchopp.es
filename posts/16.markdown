@@ -1,0 +1,11 @@
+I drank cola all evening, because there was nothing else in the house, so I stayed up till late. And now a memory of _Kiseijuu_ manga is keeping me further awake with my fear of dying coupled with my weak faith, so I'll write a bit more now.
+
+I went to my high school yesterday (Tuesday; it's already long past midnight). One reason was because it was a convenient way to meet up with [James](https://twitter.com/mrgame64), but also I wanted to leave my family house and see some of my old friends and kouhais once in a while.
+
+The school hasn't changed much since I graduated. The CompSci teacher says he hasn't found a replacement for me and my broad skillset, but he did find people to do the things I used to do, the website, the students server, all of that.
+
+I can't say that I'm satisfied with what they've been doing, but I don't think it would be right of me to demand from someone to be like me. I know a bit of everything, but I don't think it to be too valuable. Recruiters seem to agree; or maybe I just picked the view from them.
+
+The people who replaced me surely made some peculiar decisions, such as nuking `/etc/nginx` to keep nginx from starting faster than Apache2, and using VirtualBox directly to run Windows 10, and having a .NET app to let people create accounts on the server (which notably declared the need for 21 gigabytes of virtual memory). But eventually, they'll figure it all out, and that makes me a bit happy.
+
+And it's not like I'm completely unneeded. After all, it would appear I'm the only one who can be bothered to get through installing [SIO2](https://github.com/sio2project/oioioi), though it hurts my pride that I wasn't able to finish the process in one day.
