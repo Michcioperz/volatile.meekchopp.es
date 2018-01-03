@@ -42,6 +42,11 @@ do
     <updated>${LAST_CHANGED}</updated>
   </entry>
 EOF
+  if [[ "${LAST_CHANGED}" == "${FIRST_CHANGED}" ]]; then
+    sed -i "1i<h5>published: ${FIRST_CHANGED}</h5>" "_site/${POST_PREFIX}.html"
+  else
+    sed -i "1i<h5>published: ${FIRST_CHANGED} :: last updated: ${LAST_CHANGED}</h5>" "_site/${POST_PREFIX}.html"
+  fi
   sed -i "1i<h3>${POST_TITLE}</h3>" "_site/${POST_PREFIX}.html"
 done
 echo "Generating main feed"
@@ -86,6 +91,7 @@ cat > _site/index.html <<EOF
     <meta name="viewport" content="width=device-width">
     <title>`xmlstarlet esc "${WEBSITE_TITLE}"`</title>
     <meta name="description" content="`xmlstarlet esc "${WEBSITE_SUBTITLE}"`">
+    <link rel="stylesheet" href="/style.css">
   </head>
   <body>
     <header>
@@ -115,6 +121,7 @@ EOF
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <title>Post #${post_id} :: `xmlstarlet esc "${WEBSITE_TITLE}"`</title>
+    <link rel="stylesheet" href="/style.css">
   </head>
   <body>
     <header>
@@ -137,4 +144,6 @@ cat >> _site/index.html <<EOF
   </body>
 </html>
 EOF
+echo "Adding a stylesheet"
+cp "style.css" "_site/style.css"
 echo "Build complete."
