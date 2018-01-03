@@ -67,4 +67,6 @@ do
   echo -e "\tReformatting $i"
   xmlstarlet format -s 2 "$i" > ${i%.xml}.f.xml && mv ${i%.xml}.f.xml $i || rm -rf ${i%.xml}.f.xml
 done
+echo "Adding the HTML index"
+cp landing.html _site/index.html
 echo "Build complete."
