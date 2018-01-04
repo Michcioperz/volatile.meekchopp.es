@@ -26,10 +26,10 @@ do
   fi
   cp $post _site/$post
   cmark --to html --smart $post > _site/${POST_PREFIX}.html
-  cat > _site/${POST_PREFIX}.xml <<EOF
+  cat > _site/${POST_PREFIX}.atom <<EOF
   <entry>
-    <id>${WEBSITE_ROOT}${POST_PREFIX}.xml</id>
-    <link rel="self" type="application/atom+xml" href="${WEBSITE_ROOT}${POST_PREFIX}.xml" />
+    <id>${WEBSITE_ROOT}${POST_PREFIX}.atom</id>
+    <link rel="self" type="application/atom+xml" href="${WEBSITE_ROOT}${POST_PREFIX}.atom" />
     <link rel="alternate" type="text/html" href="${WEBSITE_ROOT}${POST_PREFIX}.html" />
     <link rel="alternate" type="text/markdown" href="${WEBSITE_ROOT}${POST_PREFIX}.markdown" />
     <title>${POST_TITLE}</title>
@@ -50,14 +50,14 @@ EOF
   sed -i "1i<h3>${POST_TITLE}</h3>" "_site/${POST_PREFIX}.html"
 done
 echo "Generating main feed"
-cat > _site/index.xml <<EOF
+cat > _site/index.atom <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>${WEBSITE_TITLE}</title>
   <subtitle>${WEBSITE_SUBTITLE}</subtitle>
-  <link href="${WEBSITE_ROOT}index.xml" rel="self" />
+  <link href="${WEBSITE_ROOT}index.atom" rel="self" />
   <link href="https://creativecommons.org/licenses/by/4.0/" rel="license" />
-  <id>${WEBSITE_ROOT}index.xml</id>
+  <id>${WEBSITE_ROOT}index.atom</id>
   <author>
     <name>${WEBSITE_AUTHOR_NAME}</name>
     <uri>${WEBSITE_AUTHOR_URL}</uri>
@@ -66,14 +66,14 @@ cat > _site/index.xml <<EOF
   <generator uri="https://github.com/michcioperz/volatile.meekchopp.es" version="${GENERATOR_VERSION}">Michcioperz's Volatile (revision ${GENERATOR_VERSION})</generator>
   <updated>${LATEST_CHANGED}</updated>
 EOF
-for post in `ls _site/posts/*.xml | sort -V -r`
+for post in `ls _site/posts/*.atom | sort -V -r`
 do
   echo "Adding and finalizing ${post#_site/posts/}"
-  cat $post >> _site/index.xml
+  cat $post >> _site/index.atom
   sed -i '1i<?xml version="1.0" encoding="UTF-8"?>' $post
   sed -i 's/<entry>/<entry xmlns="http:\/\/www.w3.org\/2005\/Atom">/' $post
 done
-cat >> _site/index.xml <<EOF
+cat >> _site/index.atom <<EOF
 </feed>
 EOF
 echo "Generating main HTML"
@@ -89,7 +89,7 @@ cat > _site/index.html <<EOF
     <link href="/style.css" rel="stylesheet" />
     <link href="${WEBSITE_AUTHOR_URL}" rel="author" />
     <link href="https://creativecommons.org/licenses/by/4.0/" rel="license" />
-    <link href="index.xml" rel="alternate" type="application/atom+xml"/>
+    <link href="index.atom" rel="alternate" type="application/atom+xml"/>
   </head>
   <body>
     <header>
@@ -122,7 +122,7 @@ EOF
     <meta name="generator" content="Michcioperz's Volatile (revision ${GENERATOR_VERSION})" />
     <link href="${WEBSITE_AUTHOR_URL}" rel="author" />
     <link href="https://creativecommons.org/licenses/by/4.0/" rel="license" />
-    <link href="${post_id}.xml" rel="alternate" type="application/atom+xml" />
+    <link href="${post_id}.atom" rel="alternate" type="application/atom+xml" />
     <link href="${post_id}.markdown" rel="alternate" type="text/markdown" />
     <link href="/style.css" rel="stylesheet" />
   </head>
@@ -150,10 +150,10 @@ EOF
 echo "Adding a stylesheet"
 cp "style.css" "_site/style.css"
 echo "Reformatting XMLs"
-for i in `find _site -name "*.xml"`
+for i in `find _site -name "*.atom"`
 do
   echo -e "\tReformatting $i"
-  j="${i%.xml}.f.xml"
+  j="${i%.atom}.f.atom"
   xmlstarlet format -s 2 "$i" > "$j" && mv "$j" "$i" || rm -rf "$j"
 done
 echo "Reformatting HTMLs"
