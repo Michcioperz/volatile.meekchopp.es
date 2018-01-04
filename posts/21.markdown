@@ -1,0 +1,1 @@
+It's come to my attention that Spotify has finally invented a "replacement" for libspotify which works in just a small percentage of former use cases, [the Web Playback SDK](https://beta.developer.spotify.com/documentation/web-playback-sdk/). It utilises EME to gracefully dump all the commandline nerds and low-power devices just like that.
