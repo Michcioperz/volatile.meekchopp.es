@@ -1,0 +1,9 @@
+There's a fair amount of websites that _kind of just work_ on ELinks on my netbook, but they could be far more comfortable if designed differently. For example, GitHub has so much data on some repos (branch/tag lists) that the browser just hangs.
+
+On the other hand there's quite a few websites that don't work at all without JavaScript and the likes, but I think I could figure out how to write a wrapper server of sorts that would run on my device and transform the website into something edible for ELinks.
+
+So I was wondering if I could just fork ELinks and get it to half-silently send requests matching one of the expressions put together by the wrapper server to the wrapper server instead of the actual server. This would allow me, amongst other things, to browse crates.io without issues. (At the time of writing trying to access anything on crates.io returns a JSON that says something like "not found".)
+
+I was wondering how I could enforce it that only a small subset of necessary and sensible things be used for those replacement websites, gave it some thought on the metro this morning, and between "this sounds like something Gopher would be good for" and "I feel like I'm reinventing the wheel" I realized I've been considering revival of WAP.
+
+I'll just blame it on tea. I haven't drunk black tea in a few weeks.
