@@ -1,0 +1,7 @@
+I've been trying to get Discord to work with my bitlbee setup because my laptop can't afford to run the full app (there's hardly enough RAM for a web browser, not to mention an Electron or React Native app).
+
+`purple-discord` doesn't really work for me.
+
+`bitlbee-discord` doesn't really work for me.
+
+I could probably just use `purple-discord` with Pidgin but that cuts me from keeping logs.
