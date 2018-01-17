@@ -1,0 +1,1 @@
+It appears to me that whenever somebody complains about there not being enough different web browsers somebody starts making another webkit2gtk-based browser and then GNOME adopts it.
