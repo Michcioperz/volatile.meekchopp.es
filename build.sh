@@ -83,6 +83,7 @@ cat > _site/index.html <<EOF
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    <meta name="flattr:id" content="${WEBSITE_FLATTR_ID}" />
     <title>`xmlstarlet esc "${WEBSITE_TITLE}"`</title>
     <meta name="description" content="`xmlstarlet esc "${WEBSITE_SUBTITLE}"`" />
     <meta name="generator" content="Michcioperz's Volatile (revision ${GENERATOR_VERSION})" />
@@ -119,6 +120,7 @@ EOF
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Post #${post_id} :: `xmlstarlet esc "${WEBSITE_TITLE}"`</title>
+    <meta name="flattr:id" content="${WEBSITE_FLATTR_ID}" />
     <meta name="generator" content="Michcioperz's Volatile (revision ${GENERATOR_VERSION})" />
     <link href="${WEBSITE_AUTHOR_URL}" rel="author" />
     <link href="https://creativecommons.org/licenses/by/4.0/" rel="license" />
