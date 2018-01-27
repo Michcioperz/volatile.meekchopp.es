@@ -1,0 +1,3 @@
+It took me until university to figure out how to play Minesweeper. Thought you should know.
+
+Thinking of writing a solver or something, like I did with Signpost.
