@@ -1,0 +1,3 @@
+The goal of the Gauss Elimination Chamber Festival is to reform the ruling structure of the internet by removing the dependence on JavaScript. It might end up trying to build a sensible easy-to-use GUI toolkit in the process though, because that's the only way we're ever getting Electron out of young people's minds.
+
+And yes, the name is a pun on our half-assed academic background of undergraduate Computer Science and on _Re:Creators_.
