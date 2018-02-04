@@ -1,0 +1,3 @@
+I have a Linear Algebra exam tomorrow, but I just realized ActivityPub doesn't really require an immediate response at any point. Expect a static implementation from me soon enough.
+
+The way I want it to work is by sending everything POSTed into inbox to, well, a mailbox locally, where I'll review stuff locally and react to it. The outbox can be statically generated just like my whole blog's been so far. Authorization and such stuff is not of concern to me at the moment, because I don't intend to use it for non-Public messages.
