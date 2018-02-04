@@ -1,0 +1,7 @@
+I've been meaning to write a music player for anime music that could keep a library of online files (from Soundcloud, YouTube, Openings.moe, anything youtube-dl could handle) and sensibly handle them. Turns out that using broken symlinks and a bash one-liner, this is possible enough.
+
+I just create a symlink called, say, `poptepipiku-op` that points at YouTube URL of _Pop Team Epic_ opening song. And then I have a `./play` script that just punches all its arguments through `readlink` and then through `youtube-dl -g` and then to `ffplay` or whatever plays music best (`mpd` became an option after an hour or so of trying to get `mocp` to work nicely).
+
+All these concepts un-nicely packaged for your love of absurdity, available at [https://github.com/michcioperz/weebshit](github:michcioperz/weebshit), licensed WTFPL, because how do you even license two bash one-liners?
+
+I only managed to come up with this because someone on the fediverse mentioned Redox OS in the last few days.
