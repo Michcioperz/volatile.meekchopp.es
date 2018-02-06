@@ -1,0 +1,3 @@
+So I was going to try out Pale Moon browser but then [this](https://github.com/jasperla/openbsd-wip/issues/86) happened, so:
+
+Gimme your favourite lightweight web browser, internet!
